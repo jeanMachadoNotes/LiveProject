@@ -65,7 +65,7 @@ This was done using HTML and JavaScript. It required a good understanding of boo
 
 ## OMDb API
 
-This was done primaringly with JS and Axios a JS Library, used to make HTTP Requests. It was a good challenge in that I had to first retrive user input, which required use of class, events handlers and an array. 
+This was done primarily with JS and Axios a JS Library, used to make HTTP Requests. It was a good challenge in that I had to first retrive user input, which required use of class, events handlers and an array. 
 ```
 /* Getting User Input*/
 
@@ -78,8 +78,25 @@ This was done primaringly with JS and Axios a JS Library, used to make HTTP Requ
   }
 
 ```
-Then taking the input and passing the value into a request to the Open Movie Database Api. Following the documentation I then retrieved the film info and outputted desired fields into a 'response' card on the webpage. 
+The user click, triggered a funciton which sent a request Axios to the API, along with the user input.
 
+```
+/* Request/Response with Axios - JS Library, used to make HTTP Requests */
+    axios.request(options)
+      /*'.then' runs function when response a success */
+      .then(function(response){
+      /* Variable to store 'data' portion of response*/
+      var moviedata = response.data;
+      /* Call function that will input information into webpage */
+      inputFunction(moviedata);
+      })
+      /*'.catch' runs function when response a failure/error */
+      .catch(function(error) {
+        console.error(error);
+      });
+
+```
+Following the documentation I then retrieved the film info and outputted desired fields into a 'response' card on the webpage. It is hidden by default but appears when there is a response from the API.
 ```
   /* Displays response into Webpage */
       function inputFunction(moviedata) {
