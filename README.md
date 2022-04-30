@@ -14,12 +14,15 @@ Technologies involved in the Live Project and to create the site:
 - Boostrap 5
 - Azure Dev Ops
 - Git
+- Axios - JS Library
 
 Below is some examples of features implemented.
 
 ## Stories
 - [Responsive Site (Mobile-Friendly)](#responsive-site-mobile-friendly)
 - [Pop-Up Contact Form](#pop-up-contact-form)
+- [Dark Mode](#dark-mode)
+- [Connecting an API](#omdb-api)
 
 ## Responsive Site (Mobile-Friendly)
 
@@ -46,74 +49,54 @@ The form can be accessed from two places, the Nav Bar or the Contact Button belo
 ![Contact Button](https://user-images.githubusercontent.com/98543446/164915682-80d4b395-7751-45ae-be50-735d33046372.gif)
 
 
+## Animation
+
+This animation was made using CSS rule @keyframes. 
+
+![The Gentle Art - Animation](https://user-images.githubusercontent.com/98543446/166086462-6c6b0fd8-8480-4561-88f4-2cea6c9dadf9.gif)
+
+
+## Dark Mode
+
+This was done using HTML and JavaScript. It required a good understanding of bootstrap classes and targeting elements. I had to target individual elements and style each accordingly. End result was  a button which gives the site a dark mode and light mode. 
+
+![The Gentle Art - Dark Mode (7)](https://user-images.githubusercontent.com/98543446/166086849-74320d97-bc28-41e7-aad7-cf820d94600d.gif)
+
+
+## OMDb API
+
+This was done primaringly with JS and Axios a JS Library, used to make HTTP Requests. It was a good challenge in that I had to first retrive user input, which required use of class, events handlers and an array. 
 ```
-<!-- Button to Open the Modal -->
-        
-          <div class="container-fluid mb-5 p-3 bg-light ">
-            <div class="row">
-              <div class="col">
-                <p id="Contact" class="text-center fs-2 mb-4">Find out how to get signed-up and started!</p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col m-3 mb-4">
-                <button type="button" class="btn btn-primary position-absolute start-50 translate-middle px-4 py-2 fs-4" data-bs-toggle="modal" data-bs-target="#myModal">
-                  Contact Us
-                </button>
-              </div>
-            </div>
-          </div>
+/* Getting User Input*/
 
+  /* Creates an array from elements with class name */
+  var movies = document.getElementsByClassName("movies");
 
-          
+  /* Goes through array assigning 'click' event to each element, and function to run when clicked. */
+  for (i = 0; i < movies.length; i++) {
+    movies[i].addEventListener('click', movieChoice);
+  }
 
-          <!-- The Modal -->
-          <div class="modal " id="myModal">
-            <div class="modal-dialog">
-              <div class="modal-content">
+```
+Then taking the input and passing the value into a request to the Open Movie Database Api. Following the documentation I then retrieved the film info and outputted desired fields into a 'response' card on the webpage. 
 
-                <!-- Modal Header -->
-                <div class="modal-header">
-                  <h4 class="modal-title">Contact Form</h4>
-                  <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                </div>
-
-                <!--Modal body -->
-                <div class="modal-body">
-
-                  <form action="https://formspree.io/f/xpzbygdq" method="POST">
-                      <div class="mb-3">
-                        <label for="firstname" class="form-label">First Name</label>
-                        <input type="text" class="form-control" id="firstname" aria-describedby="firstnameinfo" name="First Name" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="lastname" class="form-label">Last Name</label>
-                        <input type="text" class="form-control" id="lastname" aria-describedby="lastnameinfo" name="Last Name" required>
-                      </div>
-                      <div class="mb-3">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="Email" required>
-                        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
-                      </div>
-                      <div class="mb-3">
-                        <label for="message" class="form-label">Message</label>
-                        <textarea class="form-control" aria-label="message" placeholder="Your message, question..." name="Message"></textarea>
-                      </div>
-                      <div class="mb-3 form-check">
-                        <input type="checkbox" class="form-check-input" id="exampleCheck1" required>
-                        <label class="form-check-label" for="exampleCheck1">I am not a robot</label>
-                      </div>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                    <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-                    </form>
-                </div>  
-              </div>
-            </div>
-          </div>
+```
+  /* Displays response into Webpage */
+      function inputFunction(moviedata) {
+        document.getElementById("display-response").classList.remove("visually-hidden");
+        document.getElementById("title").innerHTML = moviedata.Title;
+        document.getElementById("plot").innerHTML = "<h6> Plot: </h6>" + moviedata.Plot;
+        document.getElementById("director").innerHTML = "<h6> Directed by: </h6>" + moviedata.Director;
+        document.getElementById("release-date").innerHTML = "<h6> Released: </h6>" + moviedata.Released;
+        document.getElementById("actors").innerHTML = "<h6> Starring: </h6>"  + moviedata.Actors;
+        document.getElementById("poster").setAttribute("src", moviedata.Poster);    
+      }
+  }
 ```
 
+Resulting in a fully dynamic card as a response below the movie selection, which fills dynamically with movie info. 
 
-
+![The Gentle Art - API](https://user-images.githubusercontent.com/98543446/166086922-0cb17718-b952-4d48-8bb7-13fed2f52813.gif)
 
 
 
