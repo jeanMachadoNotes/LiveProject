@@ -65,7 +65,7 @@ This was done using HTML and JavaScript. It required a good understanding of boo
 
 ## Open Movie Database API
 
-This was done primarily with JS and Axios a JS Library, used to make HTTP Requests. It was a good challenge in that I had to first retrive user input, which required use of class, events handlers and an array. 
+This challenge required connecting to a Movie Information Database. This was done primarily with JS and Axios,  a JS Library used to make HTTP Requests. It was a good challenge in that I had to first retrieve user input, which required use of classes, events handlers and an array. 
 ```
 /* Getting User Input*/
 
