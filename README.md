@@ -22,7 +22,7 @@ Below is some examples of features implemented.
 - [Responsive Site (Mobile-Friendly)](#responsive-site-mobile-friendly)
 - [Pop-Up Contact Form](#pop-up-contact-form)
 - [Dark Mode](#dark-mode)
-- [Connecting an API](#omdb-api)
+- [Connecting an API](#open-movie-database-api)
 
 ## Responsive Site (Mobile-Friendly)
 
@@ -63,7 +63,7 @@ This was done using HTML and JavaScript. It required a good understanding of boo
 ![The Gentle Art - Dark Mode (7)](https://user-images.githubusercontent.com/98543446/166086849-74320d97-bc28-41e7-aad7-cf820d94600d.gif)
 
 
-## OMDb API
+## Open Movie Database API
 
 This was done primarily with JS and Axios a JS Library, used to make HTTP Requests. It was a good challenge in that I had to first retrive user input, which required use of class, events handlers and an array. 
 ```
